@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% block title %} Pet Details {% endblock %}
+
+{% block content %}
+
+<h1>Hi, I'm {{pet.name}}. Here is some info about me.</h1>
+
+<img src="{{pet.photo_url}}" class="img-fluid" alt="Responsive image">
+
+<ul>
+    <li>Species: {{pet.species}}</li>
+    <li>Age: {{pet.age}}</li>
+    <li>Notes: {{pet.notes}}</li>
+</ul>
+
+<form id="edit-pet" method="POST">
+    {{ form.hidden_tag() }}
+    {% for field in form if field.widget.input_type != 'hidden' %}
+    <p>
+        {{ field.label }} : {{ field }}
+        {% for error in field.errors %}
+        {{error}}
+        {% endfor %}
+    </p>
+    {% endfor %}
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

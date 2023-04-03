@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+{% block title %} We Need a Home {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>We need a good home</h1>
+
+    {% for pet in pets %}
+
+    <div class="col-md-3">
+        <span class="border border-primary">
+            <a href="/pet/{{pet.id}}"><img src="{{pet.photo_url}}" class="img-fluid" alt="Responsive image"></a>
+        </span>
+        <p>{{pet.name}} is <b> AVAILABLE for adoption!!</b></p>
+
+    </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-md-12">
+
+            <a href="/pet-form/new">
+                <button class="btn btn-secondary btn-lg">Add Pet</button>
+            </a>
+        </div>
+
+        {% endblock %}
